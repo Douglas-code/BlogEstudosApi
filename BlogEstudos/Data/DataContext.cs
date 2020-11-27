@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BlogEstudos.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,6 @@ namespace BlogEstudos.Data
         public DataContext(DbContextOptions options) : base(options)
         { }
   
-            
+        public DbSet<Publicacao> Publicacoes { get; set; }
     }
 }
