@@ -1,4 +1,5 @@
 ﻿using BlogEstudos.Data;
+using BlogEstudos.Model.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,20 +14,28 @@ namespace BlogEstudos.Controllers
     [ApiController]
     public class PublicacaoController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly PublicacaoService _publicacaoService;
 
-        public PublicacaoController(DataContext context)
+        public PublicacaoController(PublicacaoService publicacaoService)
         {
-            _context = context;
+            _publicacaoService = publicacaoService;
         } 
 
         [HttpGet]
         [Route("GetPublicacoes")]
-        public async Task<IActionResult> GetPublicacoes()
+        public async Task<IActionResult> GetPublicacoes(int usuarioId)
         {
-            var publicacoes = await _context.Publicacoes.Where(x => x.Id > 0).ToListAsync();
+            try
+            { 
+                var publicacoes = await _publicacaoService.SelectAllPublicacoes(usuarioId);
 
-            return Ok(publicacoes);
+                return Ok(publicacoes);
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
         }
 
 

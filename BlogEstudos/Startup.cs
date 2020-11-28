@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using BlogEstudos.Data;
+using BlogEstudos.Model.Services;
 
 namespace BlogEstudos
 {
@@ -30,6 +31,8 @@ namespace BlogEstudos
             services.AddControllers();
             services.AddDbContext<DataContext>(options => 
                 options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<PublicacaoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
