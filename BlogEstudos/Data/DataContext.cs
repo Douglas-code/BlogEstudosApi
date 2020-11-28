@@ -17,5 +17,6 @@ namespace BlogEstudos.Data
         public DbSet<Materia> Materias { get; set; }
         public DbSet<Debate> Debates { get; set; }
         public DbSet<PublicacaoMateria> PublicacoesMaterias { get; set; }
+        public DbSet<UsuarioDebate> UsuariosDebates { get; set; }
     }
 }
