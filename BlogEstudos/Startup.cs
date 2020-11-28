@@ -6,10 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using Microsoft.EntityFrameworkCore;
 using BlogEstudos.Data;
 using BlogEstudos.Model.Services;
@@ -35,6 +32,9 @@ namespace BlogEstudos
             services.AddScoped<PublicacaoService>();
             services.AddScoped<MateriaService>();
             services.AddScoped<UsuarioService>();
+            services.AddScoped<ArquivosService>();
+
+            services.AddControllers().AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,7 +48,7 @@ namespace BlogEstudos
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseStaticFiles();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
