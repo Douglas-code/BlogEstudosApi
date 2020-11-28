@@ -1,4 +1,5 @@
 ﻿using BlogEstudos.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,13 @@ namespace BlogEstudos.Model.Services
             return false;
         }
 
+        public Usuario EscoderSenha(Usuario usuario)
+        {
+            usuario.Senha = "";
+
+            return usuario;
+        }
+
         public async Task InsertUsuarioAsync(Usuario usuario)
         {
             if (!TestaSeCamposForamPrencehidos(usuario))
@@ -39,6 +47,19 @@ namespace BlogEstudos.Model.Services
             {
                 throw new Exception("Erro ao cadastrar funcionario");
             }   
+        }
+
+        public async Task<Usuario> Login(string login, string senha)
+        {
+            Usuario usuario = await _context.Usuarios.Where(x => x.Login == login && x.Senha == senha)
+                .FirstOrDefaultAsync();
+
+            if (usuario == null)
+                throw new Exception("Usuario ou senha incorretos");
+
+            usuario = EscoderSenha(usuario);
+
+            return usuario;
         }
     }
 }

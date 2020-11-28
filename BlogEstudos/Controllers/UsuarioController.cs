@@ -34,5 +34,21 @@ namespace BlogEstudos.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpGet]
+        [Route("Login")]
+        public async Task<IActionResult> LoginAsync([FromBody] Usuario usu)
+        {
+            try
+            {
+                var usuario = await _usuarioService.Login(usu.Login, usu.Senha);
+
+                return Ok(usuario);
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }
