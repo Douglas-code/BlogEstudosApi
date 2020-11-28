@@ -13,5 +13,7 @@ namespace BlogEstudos.Data
         { }
   
         public DbSet<Publicacao> Publicacoes { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Materia> Materias { get; set; }
     }
 }
