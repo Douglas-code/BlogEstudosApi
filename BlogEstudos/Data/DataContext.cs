@@ -1,9 +1,5 @@
 ﻿using BlogEstudos.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlogEstudos.Data
 {
@@ -18,5 +14,6 @@ namespace BlogEstudos.Data
         public DbSet<Debate> Debates { get; set; }
         public DbSet<PublicacaoMateria> PublicacoesMaterias { get; set; }
         public DbSet<UsuarioDebate> UsuariosDebates { get; set; }
+        public DbSet<UsuarioMateria> UsuariosMaterias { get; set; }
     }
 }
