@@ -17,5 +17,17 @@ namespace BlogEstudos.Model
         public string Conteudo { get; set; }
         [ForeignKey("tb_usuario")]
         public int UsuarioId { get; set; }
+        public Usuario Usuario { get; set; }
+
+        public Publicacao() { }
+
+        public Publicacao(int id, DateTime dataPublicacao, string titulo, string conteudo, int usuarioId)
+        {
+            Id = id;
+            DataPublicacao = dataPublicacao;
+            Titulo = titulo;
+            Conteudo = conteudo;
+            UsuarioId = usuarioId;
+        }
     }
 }
