@@ -16,7 +16,7 @@ namespace BlogEstudos.Model.Services
             _context = dataContext;
         }
 
-        public async Task<ICollection<Materia>> SelectAllMaterias() 
+        public async Task<ICollection<Materia>> SelectAllMateriasAsync() 
         {
             var materias = await _context.Materias.Where(x => x.Id > 0).ToListAsync();
 
