@@ -6,10 +6,12 @@ namespace BlogEstudos.Model
 {
     public class Debate
     {
-        [Key]
         public int Id { get; set; } 
         public string Titulo { get; set; }
-        public ICollection<UsuarioDebate> UsuarioDebates { get; set; }
+        public int MateriaId { get; set; }
+        public Materia Materia { get; set; }
+        public ICollection<PublicacaoDebate> PublicacoesDebates { get; set; }
+        public ICollection<UsuarioDebate> UsuariosDebates { get; set; }
 
         public Debate() { }
 

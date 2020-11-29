@@ -14,6 +14,7 @@ namespace BlogEstudos.Data
         public DbSet<Debate> Debates { get; set; }
         public DbSet<UsuarioDebate> UsuariosDebates { get; set; }
         public DbSet<UsuarioMateria> UsuariosMaterias { get; set; }
+        public DbSet<PublicacaoDebate> PublicacoesDebates { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,6 +23,9 @@ namespace BlogEstudos.Data
 
             modelBuilder.Entity<UsuarioMateria>()
                 .HasKey(x => new { x.UsuarioId, x.MateriaId });
+
+            modelBuilder.Entity<PublicacaoDebate>()
+                .HasKey(x => new { x.DebateId, x.PublicacaoId });
         }
 
     }

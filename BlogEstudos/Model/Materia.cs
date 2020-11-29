@@ -6,7 +6,6 @@ namespace BlogEstudos.Model
 {
     public class Materia
     {
-        [Key]
         public int Id { get; set; }
         public string Nome { get; set; }
         public ICollection<UsuarioMateria> UsuariosMaterias { get; set; }

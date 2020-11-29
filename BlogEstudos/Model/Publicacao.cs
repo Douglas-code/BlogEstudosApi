@@ -17,6 +17,7 @@ namespace BlogEstudos.Model
         public int MateriaId { get; set; }
         public Usuario Usuario { get; set; }
         public Materia Materia { get; set; }
+        public ICollection<PublicacaoDebate> PublicacoesDebates { get; set; }
 
         public Publicacao() { }
 
