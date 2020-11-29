@@ -50,7 +50,7 @@ namespace BlogEstudos
             app.UseRouting();
             app.UseStaticFiles();
             app.UseAuthorization();
-
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
