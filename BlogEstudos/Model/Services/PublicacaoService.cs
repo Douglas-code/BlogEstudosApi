@@ -20,6 +20,7 @@ namespace BlogEstudos.Model.Services
         {
             var publicacoes = await _context.Publicacoes.Where(x => x.Id > 0 && x.UsuarioId == usuarioId)
                 .Include(x => x.Usuario)
+                .Include(x => x.Materia)
                 .ToListAsync();
 
             foreach (var p in publicacoes)
@@ -33,5 +34,18 @@ namespace BlogEstudos.Model.Services
 
             return publicacoes;
         } 
+
+        public async Task CriarPublicaoAsync(Publicacao publicacao)
+        {
+            try
+            {
+                _context.Publicacoes.Add(publicacao);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception )
+            {
+                throw new Exception("Erro ao cadastrar");
+            }
+        }
     }
 }

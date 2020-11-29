@@ -13,8 +13,8 @@ namespace BlogEstudos.Model
         public int UsuarioId {get; set;}
         [ForeignKey("tb_materia")]
         public int MateriaId { get; set; }
-        public ICollection<Usuario> Usuarios { get; set; }
-        public ICollection<Materia> Materias { get; set; }
+        public Usuario Usuario { get; set; }
+        public Materia Materia { get; set; }
 
         public UsuarioMateria() { }
 

@@ -15,6 +15,8 @@ namespace BlogEstudos.Model
         public string Nome { get; set; }
         public string Login { get; set; }
         public string Senha { get; set; }
+        public ICollection<UsuarioDebate> UsuarioDebates { get; set; }
+        public ICollection<UsuarioMateria> UsuariosMaterias { get; set; }
 
         public Usuario() { }
 

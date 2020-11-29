@@ -16,8 +16,8 @@ namespace BlogEstudos.Model
         public int UsuarioId { get; set; }
         [ForeignKey("tb_debate")]
         public int DebateId { get; set; }
-        public ICollection<Usuario> Usuarios { get; set; }
-        public ICollection<Debate> Debates { get; set; }
+        public Usuario Usuario { get; set; }
+        public Debate Debate { get; set; }
 
         public UsuarioDebate() { }
 
