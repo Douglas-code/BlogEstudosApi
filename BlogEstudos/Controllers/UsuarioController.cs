@@ -35,7 +35,7 @@ namespace BlogEstudos.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("Login")]
         public async Task<IActionResult> LoginAsync([FromBody] Usuario usu)
         {
