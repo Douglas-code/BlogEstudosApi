@@ -16,7 +16,7 @@ namespace BlogEstudos.Model.Services
             _context = dataContext;
         }
 
-        public async Task<ICollection<Publicacao>> SelectAllPublicacoes(int usuarioId) 
+        public async Task<ICollection<Publicacao>> SelectAllPublicacoes(int usuarioId)
         {
             var publicacoes = await _context.Publicacoes.Where(x => x.Id > 0 && x.UsuarioId == usuarioId)
                 .Include(x => x.Usuario)
@@ -33,7 +33,26 @@ namespace BlogEstudos.Model.Services
                 throw new Exception("Ocorreu um erro!");
 
             return publicacoes;
-        } 
+        }
+
+        public async Task<ICollection<Publicacao>> SelectPublicacoes(int usuarioId)
+        {
+            var materias = await _context.UsuariosMaterias.Where(x => x.UsuarioId == usuarioId).Select(x => x.MateriaId).ToListAsync();
+
+            var publi = await _context.Publicacoes.Where(x => x.Id > 0)
+                   .Include(x => x.Usuario)
+                   .Include(x => x.Materia)
+                   .ToListAsync();
+
+            List<Publicacao> publicacoes = new List<Publicacao>();
+
+            foreach (var mt in materias)
+            {
+                publicacoes.AddRange(publi.Where(x => x.MateriaId == mt).ToList());
+            }
+
+            return publicacoes;
+        }
 
         public async Task CriarPublicaoAsync(Publicacao publicacao)
         {
@@ -42,7 +61,7 @@ namespace BlogEstudos.Model.Services
                 _context.Publicacoes.Add(publicacao);
                 await _context.SaveChangesAsync();
             }
-            catch (Exception )
+            catch (Exception)
             {
                 throw new Exception("Erro ao cadastrar");
             }
