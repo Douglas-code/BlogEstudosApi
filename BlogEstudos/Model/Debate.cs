@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BlogEstudos.Model
 {
-    [Table("tb_debate")]
     public class Debate
     {
         [Key]

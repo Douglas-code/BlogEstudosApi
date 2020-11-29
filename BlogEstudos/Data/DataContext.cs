@@ -23,5 +23,6 @@ namespace BlogEstudos.Data
             modelBuilder.Entity<UsuarioMateria>()
                 .HasKey(x => new { x.UsuarioId, x.MateriaId });
         }
+
     }
 }

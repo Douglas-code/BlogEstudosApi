@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace BlogEstudos.Model
 {
-    [Table("tb_usuario")]
     public class Usuario
     {
-        [Key]
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Login { get; set; }
