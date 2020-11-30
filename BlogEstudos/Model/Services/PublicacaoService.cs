@@ -55,9 +55,10 @@ namespace BlogEstudos.Model.Services
         }
 
         public async Task CriarPublicaoAsync(Publicacao publicacao)
-        {
+        { 
             try
             {
+                publicacao.DataPublicacao = DateTime.Now;
                 _context.Publicacoes.Add(publicacao);
                 await _context.SaveChangesAsync();
             }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BlogEstudos.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class ArquivosController : ControllerBase
     {
@@ -21,11 +21,11 @@ namespace BlogEstudos.Controllers
 
         [HttpPost]
         [Route("upload")]
-        public async Task<IActionResult> UploadAsync([FromForm] IFormFile files)
+        public async Task<IActionResult> UploadAsync([FromForm] IFormFile files, int materiaId)
         {
             try
             {
-                var result = await _arquivosService.UploadAsync(files, 1);
+                var result = await _arquivosService.UploadAsync(files, materiaId);
 
                 return Ok(result);
             }
